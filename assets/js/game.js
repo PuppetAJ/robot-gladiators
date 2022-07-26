@@ -82,7 +82,7 @@ var fight = function(enemyName) {
                 // if we're not at the last enemy in the array + we're alive
                 if (playerHealth > 0 && i < enemyNames.length - 1 ) {
 
-                    var storeConfirm = window.confirm("The fight is over, viusit the store before the next round?");
+                    var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
 
                     if (storeConfirm) {
                             shop(); 
@@ -109,7 +109,7 @@ var fight = function(enemyName) {
             window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + ".");
         }
         else { 
-            window.alert("You've lost your robot iun battle.");
+            window.alert("You've lost your robot in battle.");
         }
 
         var playAgainConfirm = window.confirm("Would you like to play again?");
@@ -126,7 +126,7 @@ var fight = function(enemyName) {
 
     var shop = function() {
         var shopOptionPrompt = window.prompt(
-            "Would you like to REFILL your health, UPGRADE your attack or LEAVE the store? please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+            "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
         )
 
         switch (shopOptionPrompt) {
