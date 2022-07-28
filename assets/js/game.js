@@ -98,9 +98,17 @@ var fightOrSkip = function() {
 
 var fight = function(enemy) {
 
+    var isPlayerTurn = true;
+
+    if (Math.random() > 0.5) {
+        isPlayerTurn = false;
+    }
+
     while(playerInfo.health > 0 && enemy.health > 0) {
 
-           if (fightOrSkip()) {
+        if (isPlayerTurn) {
+
+            if (fightOrSkip()) {
                 break;
            }
 
@@ -114,27 +122,37 @@ var fight = function(enemy) {
             // check enemy's health
             if (enemy.health <= 0) {
             window.alert(enemy.name + " has died!");
+
+            playerInfo.money = playerInfo.money + 20; 
+
             break;
             } else {
             window.alert(enemy.name + " still has " + enemy.health + " health left.");
             }
-        
-            // remove player's health by subtracting the amount set in the enemy.attack variable
-            var damage = randomNumber(enemy.attack - 3, enemy.attack);
 
-            playerInfo.health = Math.max(0, playerInfo.health - damage);
-            console.log(
-            enemy.name + " attacked " + playerInfo.name + ". " + playerInfo.name + " now has " + playerInfo.health + " health remaining."
-            );
+        } else {
+
+             // remove player's health by subtracting the amount set in the enemy.attack variable
+             var damage = randomNumber(enemy.attack - 3, enemy.attack);
+
+             playerInfo.health = Math.max(0, playerInfo.health - damage);
+             console.log(
+             enemy.name + " attacked " + playerInfo.name + ". " + playerInfo.name + " now has " + playerInfo.health + " health remaining."
+             );
+         
+             // check player's health
+             if (playerInfo.health <= 0) {
+             window.alert(playerInfo.name + " has died!");
+             break;
+             } else {
+             window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
+             }
+
+            }  
         
-            // check player's health
-            if (playerInfo.health <= 0) {
-            window.alert(playerInfo.name + " has died!");
-            break;
-            } else {
-            window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
-            }
-     
+        isPlayerTurn = !isPlayerTurn; 
+        // switches turn order
+           
     }
 }; 
 
